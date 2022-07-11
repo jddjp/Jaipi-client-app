@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "634523366455",
+    "project_id": "jaipi-c0c99",
+    "storage_bucket": "jaipi-c0c99.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634523366455:android:7069b5e38e003f4f8abbb2",
+        "android_client_info": {
+          "package_name": "mx.com.jaipi.client"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "634523366455-tg5rbsrev92pm044n4fubiotlvrisfio.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDg31xCBpunPWmCeFkEHx8EQ2LzPR0uHyA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "634523366455-tg5rbsrev92pm044n4fubiotlvrisfio.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
