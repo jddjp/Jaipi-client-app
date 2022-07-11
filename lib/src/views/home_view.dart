@@ -111,15 +111,10 @@ class _HomeViewState extends State<HomeView> {
           child: Column(
             children: [
               Stack(children: [
-                Arc(
-                  arcType: ArcType.CONVEX,
-                  edge: Edge.BOTTOM,
-                  height: (MediaQuery.of(context).size.width) / 25,
-                  child: new Container(
-                      height: (MediaQuery.of(context).size.height * 0.37),
-                      width: MediaQuery.of(context).size.width,
-                      color: primaryColor),
-                ),
+                Container(
+                    height: (MediaQuery.of(context).size.height * 0.37),
+                    width: MediaQuery.of(context).size.width,
+                    color: primaryColor),
                 Container(
                   width: MediaQuery.of(context).size.width,
                   height: 50,
