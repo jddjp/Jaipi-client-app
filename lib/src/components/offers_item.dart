@@ -18,9 +18,14 @@ class OffersItem extends StatelessWidget {
           showShadow: true,
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(spacing_middle)),
+          borderRadius: BorderRadius.all(
+            Radius.circular(spacing_middle),
+          ),
           child: CachedNetworkImage(
-              imageUrl: offers['image']['url'], fit: BoxFit.cover),
+            height: 20,
+            imageUrl: offers['image']['url'],
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );

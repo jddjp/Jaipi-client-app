@@ -206,7 +206,8 @@ class _HomeViewState extends State<HomeView> {
                               color: primaryColor,
                               margin: EdgeInsets.only(left: 15),
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
+                                borderRadius:
+                                    BorderRadius.circular(spacing_standard_new),
                               ),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -267,7 +268,8 @@ class _HomeViewState extends State<HomeView> {
                           CarouselSlider.builder(
                             itemCount: snap.data.docs.length,
                             options: CarouselOptions(
-                              aspectRatio: 2.0,
+                              viewportFraction: 0.5,
+                              aspectRatio: 3.0,
                               enlargeCenterPage: true,
                               autoPlay: true,
                             ),
