@@ -23,6 +23,7 @@ class _HomeViewState extends State<HomeView> {
   Future<QuerySnapshot> _lastBusinessesSnapshot;
   Future<QuerySnapshot> _offersSnapshot;
   Place currentAddress;
+  int _actualPage = 0;
 
   @override
   void initState() {
@@ -97,7 +98,52 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ),
             )
-          : Container(height: 0),
+          // todo: barra de navegacion aun no terminada
+          : BottomNavigationBar(
+              onTap: (index) {
+                setState(() {
+                  _actualPage = index;
+                });
+              },
+              currentIndex: _actualPage,
+              items: [
+                  BottomNavigationBarItem(
+                    backgroundColor: appColorPrimary,
+                    icon: Icon(
+                      Icons.home,
+                      color: food_color_yellow,
+                    ),
+                    label: "Inicio",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.percent,
+                      color: food_color_yellow,
+                    ),
+                    label: "Ofertas",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.star,
+                      color: food_color_yellow,
+                    ),
+                    label: "Favoritos",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.handyman_outlined,
+                      color: food_color_yellow,
+                    ),
+                    label: "Soporte",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.person_outline,
+                      color: food_color_yellow,
+                    ),
+                    label: "Mi perfil",
+                  ),
+                ]),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -116,12 +162,12 @@ class _HomeViewState extends State<HomeView> {
                       Builder(
                         builder: (context) {
                           return IconButton(
-                              icon: Icon(
-                                Icons.menu,
-                                color: primaryColor,
-                              ),
-                              onPressed: () =>
-                                  Scaffold.of(context).openDrawer());
+                            icon: Icon(
+                              Icons.menu,
+                              color: primaryColor,
+                            ),
+                            onPressed: () => Scaffold.of(context).openDrawer(),
+                          );
                         },
                       ),
                       Expanded(
@@ -290,33 +336,37 @@ class _HomeViewState extends State<HomeView> {
                     mHeading('Últimos negocios'),
                     SizedBox(height: spacing_standard_new),
                     FutureBuilder(
-                        future: _lastBusinessesSnapshot,
-                        builder: (BuildContext context,
-                            AsyncSnapshot<QuerySnapshot> snapshot) {
-                          if (snapshot.hasError) {
-                            return Text('Something went wrong');
-                          }
+                      future: _lastBusinessesSnapshot,
+                      builder: (BuildContext context,
+                          AsyncSnapshot<QuerySnapshot> snapshot) {
+                        if (snapshot.hasError) {
+                          return Text('Something went wrong');
+                        }
 
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return Center(
-                                child: CircularProgressIndicator(
-                              backgroundColor: appColorAccent,
-                            ));
-                          }
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Center(
+                              child: CircularProgressIndicator(
+                            backgroundColor: appColorAccent,
+                          ));
+                        }
 
-                          return ListView.builder(
-                              primary: false,
-                              scrollDirection: Axis.vertical,
-                              shrinkWrap: true,
-                              itemCount: snapshot.data.docs.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return BusinessItem(business: {
-                                  ...snapshot.data.docs[index].data(),
-                                  "id": snapshot.data.docs[index].id
-                                });
-                              });
-                        }),
+                        return ListView.builder(
+                          primary: false,
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          itemCount: snapshot.data.docs.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return BusinessItem(
+                              business: {
+                                ...snapshot.data.docs[index].data(),
+                                "id": snapshot.data.docs[index].id
+                              },
+                            );
+                          },
+                        );
+                      },
+                    ),
                   ],
                 ),
               )
