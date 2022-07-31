@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:jaipi/src/config/constants.dart';
-import 'package:jaipi/src/helpers/extension_helper.dart';
-import 'package:jaipi/src/helpers/widget_helper.dart';
-import 'package:jaipi/src/views/business_view.dart';
+import 'package:flutter/material.dart';
+import 'package:jaipi/src/config/config.dart';
+import 'package:jaipi/src/helpers/helpers.dart';
+import 'package:jaipi/src/views/views.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class OffersItem extends StatelessWidget {

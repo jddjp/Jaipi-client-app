@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jaipi/src/helpers/size_helper.dart';
+import 'package:jaipi/src/helpers/helpers.dart';
 
 const primaryColor = Color(0xff0A1C49);
 

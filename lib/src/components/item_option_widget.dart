@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:jaipi/src/components/stepper_counter.dart';
-import 'package:jaipi/src/config/colors.dart';
-import 'package:jaipi/src/config/constants.dart';
-import 'package:jaipi/src/controllers/item_option_controller.dart';
-import 'package:jaipi/src/helpers/widget_helper.dart';
-import 'package:jaipi/src/models/item_option_model.dart';
+import 'package:jaipi/src/components/components.dart';
+import 'package:jaipi/src/config/config.dart';
+import 'package:jaipi/src/controllers/controllers.dart';
+import 'package:jaipi/src/helpers/helpers.dart';
+import 'package:jaipi/src/models/models.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 class ItemOptionWidget extends StatefulWidget {

@@ -1,20 +1,16 @@
-import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:jaipi/src/components/item_widget.dart';
-import 'package:jaipi/src/config/colors.dart';
-import 'package:jaipi/src/config/constants.dart';
-import 'package:jaipi/src/config/images.dart';
-import 'package:jaipi/src/controllers/business_controller.dart';
-import 'package:jaipi/src/helpers/extension_helper.dart';
-import 'package:jaipi/src/helpers/utils_helper.dart';
-import 'package:jaipi/src/helpers/widget_helper.dart';
-import 'package:jaipi/src/providers/cart_provider.dart';
-import 'package:jaipi/src/services/search_delegate.dart';
-import 'package:jaipi/src/views/cart_view.dart';
+import 'package:flutter/material.dart';
+import 'package:jaipi/src/components/components.dart';
+import 'package:jaipi/src/config/config.dart';
+import 'package:jaipi/src/controllers/controllers.dart';
+import 'package:jaipi/src/helpers/helpers.dart';
+import 'package:jaipi/src/models/models.dart';
+import 'package:jaipi/src/providers/providers.dart';
+import 'package:jaipi/src/services/services.dart';
+import 'package:jaipi/src/views/views.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:provider/provider.dart';
-import 'package:jaipi/src/models/item_model.dart';
 
 class BusinessView extends StatefulWidget {
   // Route name for this view
@@ -40,7 +36,8 @@ class _BusinessViewState extends StateMVC<BusinessView> {
     // TODO: implement initState
     super.initState();
 
-    Provider.of<CartProvider>(context, listen: false).setBusiness(widget.businessId);
+    Provider.of<CartProvider>(context, listen: false)
+        .setBusiness(widget.businessId);
   }
 
   @override
@@ -220,7 +217,9 @@ class _BusinessViewState extends StateMVC<BusinessView> {
                                                     itemBuilder:
                                                         (BuildContext context,
                                                             index) {
-                                                      return ItemWidget(item: new ItemModel.fromJSON({
+                                                      return ItemWidget(
+                                                          item: new ItemModel
+                                                              .fromJSON({
                                                         ...items[index],
                                                         "business":
                                                             _con.business
@@ -275,7 +274,10 @@ class _BusinessViewState extends StateMVC<BusinessView> {
                                     horizontal: spacing_standard_new),
                                 child: GestureDetector(
                                   onTap: () {
-                                    Provider.of<CartProvider>(context, listen: false).calculateDeliveryData().then((value) {
+                                    Provider.of<CartProvider>(context,
+                                            listen: false)
+                                        .calculateDeliveryData()
+                                        .then((value) {
                                       launchScreen(context, CartView.routeName);
                                     });
                                   },
@@ -297,20 +299,20 @@ class _BusinessViewState extends StateMVC<BusinessView> {
                                           BorderRadius.all(Radius.circular(50)),
                                     ),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        text(
-                                            "Ver mi pedido",
+                                        text("Ver mi pedido",
                                             isCentered: true,
                                             textColor: primaryColor,
                                             fontSize: textSizeMedium,
-                                        fontWeight: fontSemibold),
+                                            fontWeight: fontSemibold),
                                         text(
                                             "\$${context.watch<CartProvider>().order.subtotal.toStringAsFixed(2)}",
                                             isCentered: true,
                                             textColor: primaryColor,
                                             fontSize: textSizeMedium,
-                                        fontWeight: fontSemibold)
+                                            fontWeight: fontSemibold)
                                       ],
                                     ),
                                   ),

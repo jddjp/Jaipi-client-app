@@ -1,16 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:jaipi/src/components/business_item.dart';
-import 'package:jaipi/src/components/default_button.dart';
-import 'package:jaipi/src/config/colors.dart';
-import 'package:jaipi/src/config/constants.dart';
-import 'package:jaipi/src/config/images.dart';
-import 'package:jaipi/src/controllers/department_controller.dart';
-import 'package:jaipi/src/helpers/extension_helper.dart';
-import 'package:jaipi/src/helpers/widget_helper.dart';
-import 'package:jaipi/src/views/category_view.dart';
-import 'package:jaipi/src/components/search_input_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:jaipi/src/components/components.dart';
+import 'package:jaipi/src/config/config.dart';
+import 'package:jaipi/src/controllers/controllers.dart';
+import 'package:jaipi/src/helpers/helpers.dart';
+import 'package:jaipi/src/views/views.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -47,49 +42,55 @@ class _DepartmentViewState extends StateMVC<DepartmentView> {
                       ? Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Container(
-                              padding: EdgeInsets.only(top: spacing_large),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  CachedNetworkImage(
-                                      imageUrl: _con.department['icon'],
-                                      width: 100,
-                                      height: 90),
-                                  text(_con.department['name'],
-                                      fontWeight: fontBold,
-                                      fontSize: textSizeLarge),
-                                ],
+                              Container(
+                                padding: EdgeInsets.only(top: spacing_large),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    CachedNetworkImage(
+                                        imageUrl: _con.department['icon'],
+                                        width: 100,
+                                        height: 90),
+                                    text(_con.department['name'],
+                                        fontWeight: fontBold,
+                                        fontSize: textSizeLarge),
+                                  ],
+                                ),
                               ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(17.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget>[
-                                  text(
-                                      "Si cabe en nuestra maleta, te lo llevamos.", fontSize: textSizeLargeMedium, maxLine: null, isCentered: true),
-                                  SizedBox(height: spacing_large),
-                                  socialButton(
+                              Container(
+                                padding: EdgeInsets.all(17.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: <Widget>[
+                                    text(
+                                        "Si cabe en nuestra maleta, te lo llevamos.",
+                                        fontSize: textSizeLargeMedium,
+                                        maxLine: null,
+                                        isCentered: true),
+                                    SizedBox(height: spacing_large),
+                                    socialButton(
                                         whatsappColor,
                                         food_ic_whatsapp,
                                         "Solicitar servicio",
                                         whiteColor,
                                         whiteColor, () {
-                                          Uri waUrl = Uri(
-                                              scheme: "https",
-                                              host: "wa.me",
-                                              path: "52$WHATSAPPPHONE",
-                                              queryParameters: {
-                                                "text": "Hola Jaipi"
-                                              });
-                                          launch(waUrl.toString());
-                                        }, height: 60.0, iconSize: 32.0, fontSize: textSizeLargeMedium)
-                                ],
+                                      Uri waUrl = Uri(
+                                          scheme: "https",
+                                          host: "wa.me",
+                                          path: "52$WHATSAPPPHONE",
+                                          queryParameters: {
+                                            "text": "Hola Jaipi"
+                                          });
+                                      launch(waUrl.toString());
+                                    },
+                                        height: 60.0,
+                                        iconSize: 32.0,
+                                        fontSize: textSizeLargeMedium)
+                                  ],
+                                ),
                               ),
-                            ),
-                          ])
+                            ])
                       : SingleChildScrollView(
                           child: Column(children: [
                           Container(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jaipi/src/config/colors.dart';
-import 'package:jaipi/src/config/constants.dart';
+import 'package:jaipi/src/config/config.dart';
+
 
 class StepperCounter extends StatelessWidget {
   final double iconSize;

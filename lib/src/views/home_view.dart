@@ -1,24 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:clippy_flutter/clippy_flutter.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:jaipi/src/components/business_item.dart';
-import 'package:jaipi/src/components/offers_item.dart';
-import 'package:jaipi/src/components/search_input_widget.dart';
-import 'package:jaipi/src/config/colors.dart';
-import 'package:jaipi/src/config/constants.dart';
-import 'package:jaipi/src/helpers/extension_helper.dart';
-import 'package:jaipi/src/helpers/widget_helper.dart';
-import 'package:jaipi/src/providers/cart_provider.dart';
-import 'package:jaipi/src/providers/location_provider.dart';
-import 'package:jaipi/src/services/google_places_service.dart';
-import 'package:jaipi/src/views/addresses_view.dart';
-import 'package:jaipi/src/views/cart_view.dart';
-import 'package:jaipi/src/views/department_view.dart';
-import 'package:jaipi/src/views/tracking_view.dart';
-import 'package:jaipi/src/views/drawer_view.dart';
+import 'package:jaipi/src/components/components.dart';
+import 'package:jaipi/src/config/config.dart';
+import 'package:jaipi/src/helpers/helpers.dart';
+import 'package:jaipi/src/providers/providers.dart';
+import 'package:jaipi/src/services/services.dart';
+import 'package:jaipi/src/views/views.dart';
 import 'package:provider/provider.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
 class HomeView extends StatefulWidget {
   // Route name for this view

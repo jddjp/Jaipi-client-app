@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jaipi/src/config/colors.dart';
-import 'package:jaipi/src/config/constants.dart';
+import 'package:jaipi/src/config/config.dart';
 
 ThemeData getThemeData() {
   return new ThemeData(

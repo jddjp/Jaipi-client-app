@@ -1,7 +1,6 @@
-import 'package:jaipi/src/config/colors.dart';
-import 'package:jaipi/src/config/constants.dart';
-import 'package:jaipi/src/helpers/widget_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:jaipi/src/config/config.dart';
+import 'package:jaipi/src/helpers/helpers.dart';
 
 class OrderItemView extends StatefulWidget {
   static const routeName = 'order_item_view';

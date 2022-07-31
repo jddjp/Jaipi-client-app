@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jaipi/src/config/colors.dart';
-import 'package:jaipi/src/config/constants.dart';
+import 'package:jaipi/src/config/config.dart';
 
 BoxDecoration boxDecoration(
     {double radius = spacing_middle,
@@ -69,45 +68,49 @@ Widget mDivider(double width) {
           top: spacing_standard_new, bottom: spacing_standard_new));
 }
 
-Widget mPrice(Map<String, dynamic> item, { bool isLarge = false, bool withSymbol = false}) {
+Widget mPrice(Map<String, dynamic> item,
+    {bool isLarge = false, bool withSymbol = false}) {
   if (item['price'] == 0.0) {
     return Container();
   }
-  
-  double price = getRealPrice(item['price'], item['with_discount'], item['discount'], item['discount_type']);
+
+  double price = getRealPrice(item['price'], item['with_discount'],
+      item['discount'], item['discount_type']);
 
   return Row(
     children: [
       text(
-        withSymbol ? "\+ \$${price.toStringAsFixed(2)}" : "\$ ${price.toStringAsFixed(2)}",
-        fontWeight: fontSemibold,
-        fontSize: isLarge ? textSizeMedium : textSizeSMedium
-      ),
-      item['with_discount'] ?
-        Row(
-          children: [
-            SizedBox(width: 10,),
-            text(
-              "\$ ${item['price'].toStringAsFixed(2)}",
-              fontSize:  isLarge ? textSizeMedium : textSizeSMedium,
-              textColor: textMutedColor,
-              textDecoration: TextDecoration.lineThrough
+          withSymbol
+              ? "\+ \$${price.toStringAsFixed(2)}"
+              : "\$ ${price.toStringAsFixed(2)}",
+          fontWeight: fontSemibold,
+          fontSize: isLarge ? textSizeMedium : textSizeSMedium),
+      item['with_discount']
+          ? Row(
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                text("\$ ${item['price'].toStringAsFixed(2)}",
+                    fontSize: isLarge ? textSizeMedium : textSizeSMedium,
+                    textColor: textMutedColor,
+                    textDecoration: TextDecoration.lineThrough)
+              ],
             )
-          ],
-        ) : Container()
+          : Container()
     ],
   );
 }
 
-double getRealPrice(double price, bool withDiscount, double discount, String discountType) {
-    if (withDiscount == false)
-      return price;
+double getRealPrice(
+    double price, bool withDiscount, double discount, String discountType) {
+  if (withDiscount == false) return price;
 
-    // Percentage
-    if (discountType == 'percentage') {
-      return price - (price * (discount / 100));
-    }
-
-    // Fixed
-    return price - discount;
+  // Percentage
+  if (discountType == 'percentage') {
+    return price - (price * (discount / 100));
   }
+
+  // Fixed
+  return price - discount;
+}

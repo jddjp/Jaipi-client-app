@@ -1,4 +1,4 @@
-import 'package:jaipi/src/models/item_model.dart';
+import 'package:jaipi/src/models/models.dart';
 
 class OrderItemModel {
   String id;

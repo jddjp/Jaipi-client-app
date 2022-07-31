@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jaipi/src/config/colors.dart';
-import 'package:jaipi/src/config/constants.dart';
-import 'package:jaipi/src/helpers/widget_helper.dart';
-import 'package:jaipi/src/services/search_delegate.dart';
+import 'package:jaipi/src/config/config.dart';
+import 'package:jaipi/src/helpers/helpers.dart';
+import 'package:jaipi/src/services/services.dart';
 
 class SearchInputWidget extends StatefulWidget {
   final double position;

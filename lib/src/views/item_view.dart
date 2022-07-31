@@ -1,13 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:jaipi/src/components/item_option_widget.dart';
-import 'package:jaipi/src/components/stepper_counter.dart';
-import 'package:jaipi/src/config/colors.dart';
-import 'package:jaipi/src/config/constants.dart';
-import 'package:jaipi/src/controllers/order_controller.dart';
-import 'package:jaipi/src/helpers/extension_helper.dart';
-import 'package:jaipi/src/helpers/widget_helper.dart';
-import 'package:jaipi/src/models/item_model.dart';
+import 'package:flutter/material.dart';
+import 'package:jaipi/src/components/components.dart';
+import 'package:jaipi/src/config/config.dart';
+import 'package:jaipi/src/controllers/controllers.dart';
+import 'package:jaipi/src/helpers/helpers.dart';
+import 'package:jaipi/src/models/models.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 

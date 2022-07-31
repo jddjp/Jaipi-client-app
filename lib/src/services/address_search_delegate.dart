@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:jaipi/src/config/colors.dart';
-import 'package:jaipi/src/config/constants.dart';
-import 'package:jaipi/src/helpers/extension_helper.dart';
-import 'package:jaipi/src/helpers/widget_helper.dart';
-import 'package:jaipi/src/services/google_places_service.dart';
-import 'package:jaipi/src/views/address_confirmation_view.dart';
+import 'package:jaipi/src/config/config.dart';
+import 'package:jaipi/src/helpers/helpers.dart';
+import 'package:jaipi/src/services/services.dart';
+import 'package:jaipi/src/views/views.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 
 class AddressSearchDelegate extends SearchDelegate<Suggestion> {

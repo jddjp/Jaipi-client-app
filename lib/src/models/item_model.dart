@@ -1,10 +1,10 @@
-import 'package:jaipi/src/models/image_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:jaipi/src/models/models.dart';
 
 class ItemModel {
   String id;
   bool active;
-  Map<String,dynamic> business;
+  Map<String, dynamic> business;
   String description;
   double discount;
   String discountType;
@@ -36,7 +36,11 @@ class ItemModel {
   ItemModel.fromJSON(Map<String, dynamic> json) {
     try {
       id = json['id'];
-      business = json['business'] is DocumentReference ? { "id": json['business'].id } : (json['business'] is String ? { "id" : json['business'] } : json['business']);
+      business = json['business'] is DocumentReference
+          ? {"id": json['business'].id}
+          : (json['business'] is String
+              ? {"id": json['business']}
+              : json['business']);
       active = json['active'] ?? true;
       description = json['description'];
       discount = json['discount'] != null ? json['discount'].toDouble() : 0.0;

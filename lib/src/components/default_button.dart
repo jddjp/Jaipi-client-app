@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:jaipi/src/config/colors.dart';
-import 'package:jaipi/src/config/constants.dart';
+import 'package:jaipi/src/config/config.dart';
 
 class DefaultButton extends StatelessWidget {
   const DefaultButton({
@@ -33,9 +32,11 @@ class DefaultButton extends StatelessWidget {
   }
 }
 
-
 Widget socialButton(var color, var icon, var value, var iconColor,
-  var valueColor, VoidCallback onPressed, { double height = 50.0, double iconSize = 18.0, double fontSize = textSizeMedium }) {
+    var valueColor, VoidCallback onPressed,
+    {double height = 50.0,
+    double iconSize = 18.0,
+    double fontSize = textSizeMedium}) {
   return SizedBox(
     width: double.infinity,
     height: height,
@@ -45,7 +46,8 @@ Widget socialButton(var color, var icon, var value, var iconColor,
           side: BorderSide(color: whiteColor)),
       color: color,
       onPressed: onPressed,
-      icon: SvgPicture.asset(icon, color: iconColor, width: iconSize, height: iconSize),
+      icon: SvgPicture.asset(icon,
+          color: iconColor, width: iconSize, height: iconSize),
       label: Text(
         value,
         style: TextStyle(fontSize: fontSize, color: valueColor),
