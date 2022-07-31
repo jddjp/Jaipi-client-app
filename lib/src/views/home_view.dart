@@ -83,8 +83,10 @@ class _HomeViewState extends State<HomeView> {
                         width: spacing_standard,
                       ),
                       Expanded(
-                        child: text("Hay un pedido en progreso",
-                            textColor: appColorPrimary),
+                        child: text(
+                          "Hay un pedido en progreso",
+                          textColor: appColorPrimary,
+                        ),
                       ),
                       Icon(
                         Icons.arrow_forward,
@@ -102,50 +104,62 @@ class _HomeViewState extends State<HomeView> {
             children: [
               Stack(children: [
                 Container(
-                    height: (MediaQuery.of(context).size.height * 0.37),
-                    width: MediaQuery.of(context).size.width,
-                    color: primaryColor),
+                  height: (MediaQuery.of(context).size.height * 0.37),
+                  width: MediaQuery.of(context).size.width,
+                ),
                 Container(
                   width: MediaQuery.of(context).size.width,
                   height: 50,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Builder(builder: (context) {
-                        return IconButton(
-                            icon: Icon(
-                              Icons.menu,
-                              color: whiteColor,
-                            ),
-                            onPressed: () => Scaffold.of(context).openDrawer());
-                      }),
+                      Builder(
+                        builder: (context) {
+                          return IconButton(
+                              icon: Icon(
+                                Icons.menu,
+                                color: primaryColor,
+                              ),
+                              onPressed: () =>
+                                  Scaffold.of(context).openDrawer());
+                        },
+                      ),
                       Expanded(
-                          child: GestureDetector(
-                              onTap: () {
-                                launchScreen(context, AddressesView.routeName);
-                              },
-                              child: RichText(
-                                  text: TextSpan(children: [
+                        child: GestureDetector(
+                          onTap: () {
+                            launchScreen(context, AddressesView.routeName);
+                          },
+                          child: RichText(
+                            text: TextSpan(
+                              children: [
                                 WidgetSpan(
                                     child: Text(
                                   currentAddress != null
                                       ? "${currentAddress.street}"
                                       : "Cargando...",
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(color: Colors.white),
+                                  style: TextStyle(
+                                    color: primaryColor,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 )),
                                 WidgetSpan(
-                                    child: Icon(
-                                  Icons.arrow_drop_down_outlined,
-                                  color: Colors.white,
-                                ))
-                              ])))),
+                                  child: Icon(
+                                    Icons.arrow_drop_down_outlined,
+                                    color: appColorAccent,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                       Row(
                         children: <Widget>[
                           IconButton(
                             icon: Icon(
                               Icons.shopping_cart,
-                              color: Colors.white,
+                              color: primaryColor,
                             ),
                             onPressed: () {
                               launchScreen(context, CartView.routeName);
@@ -157,75 +171,83 @@ class _HomeViewState extends State<HomeView> {
                     ],
                   ),
                 ),
-                SearchInputWidget(position: 50.0, bgColor: whiteColor),
+                // TODO: Cambiar el color de buscar (En espera de respuesta)
+                SearchInputWidget(
+                  position: 60.0,
+                  bgColor: food_color_blue_gradient2,
+                ),
                 Container(
-                    transform: Matrix4.translationValues(0.0, 145.0, 0.0),
-                    height: 120,
-                    child: FutureBuilder<QuerySnapshot>(
-                        future: _departmentSnapshot,
-                        builder: (BuildContext context,
-                            AsyncSnapshot<QuerySnapshot> snapshot) {
-                          if (snapshot.hasError) {
-                            return Text('Something went wrong');
-                          }
-
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return Center(child: CircularProgressIndicator());
-                          }
-
-                          return ListView(
-                            padding: EdgeInsets.only(right: 16),
-                            scrollDirection: Axis.horizontal,
-                            children:
-                                snapshot.data.docs.map((DocumentSnapshot doc) {
-                              return GestureDetector(
-                                onTap: () {
-                                  // View department
-                                  launchScreen(
-                                      context, DepartmentView.routeName,
-                                      arguments: doc.id);
-                                },
-                                child: Container(
-                                  width: 93.0,
-                                  margin: EdgeInsets.only(
-                                    left: 20,
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      CircleAvatar(
-                                        radius: 30,
-                                        child: CachedNetworkImage(
-                                          imageUrl: doc['icon'],
-                                          height: 60,
-                                          width: 60,
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(top: 10),
-                                        child: Text(
-                                          doc['name'],
-                                          overflow: TextOverflow.ellipsis,
-                                          maxLines: 2,
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
+                  transform: Matrix4.translationValues(0.0, 180.0, 0.0),
+                  height: 70,
+                  child: FutureBuilder<QuerySnapshot>(
+                    future: _departmentSnapshot,
+                    builder: (BuildContext context,
+                        AsyncSnapshot<QuerySnapshot> snapshot) {
+                      if (snapshot.hasError) {
+                        return Text('Something went wrong');
+                      }
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(child: CircularProgressIndicator());
+                      }
+                      return ListView(
+                        scrollDirection: Axis.horizontal,
+                        children:
+                            snapshot.data.docs.map((DocumentSnapshot doc) {
+                          return GestureDetector(
+                            onTap: () {
+                              // View department
+                              launchScreen(
+                                context,
+                                DepartmentView.routeName,
+                                arguments: doc.id,
                               );
-                            }).toList(),
+                            },
+                            child: Card(
+                              color: primaryColor,
+                              margin: EdgeInsets.only(left: 15),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  CircleAvatar(
+                                    radius: 30,
+                                    child: CachedNetworkImage(
+                                      imageUrl: doc['icon'],
+                                      height: 40,
+                                      width: 40,
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 40,
+                                    width: 90,
+                                    margin: EdgeInsets.all(10),
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      doc['name'],
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 2,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: 12.0,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
                           );
-                        })),
+                        }).toList(),
+                      );
+                    },
+                  ),
+                ),
               ]),
               Container(
-                  padding: EdgeInsets.symmetric(vertical: spacing_standard_new),
+                  padding: EdgeInsets.symmetric(vertical: spacing_middle),
                   child: FutureBuilder<QuerySnapshot>(
                       future: _offersSnapshot,
                       builder: (BuildContext context,
