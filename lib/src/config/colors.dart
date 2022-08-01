@@ -51,3 +51,4 @@ const food_colorPrimary_light = Color(0xFFE8E8EC);
 const food_ShadowColor = Color(0X95E9EBF0);
 const food_ShadowColors = Color(0XFFE2E2E2);
 const food_orange_light = Color(0xFFFDF8F2);
+const food_color_blue_gradientsearch = Color.fromARGB(255, 145, 177, 236);

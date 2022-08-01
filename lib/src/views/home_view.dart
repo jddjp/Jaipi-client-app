@@ -220,7 +220,7 @@ class _HomeViewState extends State<HomeView> {
                 // TODO: Cambiar el color de buscar (En espera de respuesta)
                 SearchInputWidget(
                   position: 60.0,
-                  bgColor: food_color_blue_gradient2,
+                  bgColor: food_color_blue_gradientsearch,
                 ),
                 Container(
                   transform: Matrix4.translationValues(0.0, 180.0, 0.0),
