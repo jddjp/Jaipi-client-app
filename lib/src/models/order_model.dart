@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:jaipi/src/models/order_item_model.dart';
-import 'package:jaipi/src/services/google_places_service.dart';
+import 'package:jaipi/src/models/models.dart';
+import 'package:jaipi/src/services/services.dart';
 
 class OrderModel {
   // Business to send this order

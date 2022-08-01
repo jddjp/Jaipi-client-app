@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:jaipi/src/config/colors.dart';
-import 'package:jaipi/src/config/constants.dart';
-import 'package:jaipi/src/helpers/extension_helper.dart';
-import 'package:jaipi/src/providers/login_provider.dart';
-import 'package:jaipi/src/views/addresses_view.dart';
-import 'package:jaipi/src/views/complete_profile_view.dart';
-import 'package:jaipi/src/views/login_view.dart';
-import 'package:jaipi/src/views/profile_view.dart';
+import 'package:jaipi/src/config/config.dart';
+import 'package:jaipi/src/helpers/helpers.dart';
+import 'package:jaipi/src/providers/providers.dart';
+import 'package:jaipi/src/views/views.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 

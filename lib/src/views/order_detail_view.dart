@@ -1,10 +1,8 @@
-import 'package:jaipi/src/config/colors.dart';
-import 'package:jaipi/src/config/constants.dart';
-import 'package:jaipi/src/helpers/extension_helper.dart';
-import 'package:jaipi/src/helpers/widget_helper.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:jaipi/src/views/order_item_view.dart';
+import 'package:jaipi/src/config/config.dart';
+import 'package:jaipi/src/helpers/helpers.dart';
+import 'package:jaipi/src/views/views.dart';
 
 class OrderDetail extends StatefulWidget {
   static const routeName = 'order_detail';

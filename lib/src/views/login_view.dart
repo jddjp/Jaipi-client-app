@@ -1,18 +1,13 @@
 import 'dart:io' show Platform;
+
 import 'package:clippy_flutter/arc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:jaipi/src/components/default_button.dart';
-import 'package:jaipi/src/config/colors.dart';
-import 'package:jaipi/src/config/constants.dart';
-import 'package:jaipi/src/config/images.dart';
-import 'package:jaipi/src/config/strings.dart';
-import 'package:jaipi/src/helpers/extension_helper.dart';
-import 'package:jaipi/src/helpers/widget_helper.dart';
-import 'package:jaipi/src/providers/login_provider.dart';
-import 'package:jaipi/src/views/complete_profile_view.dart';
-import 'package:jaipi/src/views/create_account_view.dart';
-import 'package:jaipi/src/views/home_view.dart';
+import 'package:jaipi/src/components/components.dart';
+import 'package:jaipi/src/config/config.dart';
+import 'package:jaipi/src/helpers/helpers.dart';
+import 'package:jaipi/src/providers/providers.dart';
+import 'package:jaipi/src/views/views.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
 

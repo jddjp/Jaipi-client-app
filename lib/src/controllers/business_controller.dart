@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:jaipi/src/config/constants.dart';
+import 'package:jaipi/src/config/config.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 class BusinessController extends ControllerMVC {

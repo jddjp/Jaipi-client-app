@@ -1,10 +1,11 @@
 import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:jaipi/src/config/constants.dart';
-import 'package:jaipi/src/services/google_places_service.dart';
+import 'package:jaipi/src/config/config.dart';
+import 'package:jaipi/src/services/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocationProvider with ChangeNotifier {

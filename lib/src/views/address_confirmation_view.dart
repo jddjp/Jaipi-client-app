@@ -2,14 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:jaipi/src/config/colors.dart';
-import 'package:jaipi/src/config/constants.dart';
-import 'package:jaipi/src/config/images.dart';
-import 'package:jaipi/src/helpers/extension_helper.dart';
-import 'package:jaipi/src/helpers/widget_helper.dart';
-import 'package:jaipi/src/providers/cart_provider.dart';
-import 'package:jaipi/src/providers/location_provider.dart';
-import 'package:jaipi/src/services/google_places_service.dart';
+import 'package:jaipi/src/config/config.dart';
+import 'package:jaipi/src/helpers/helpers.dart';
+import 'package:jaipi/src/providers/providers.dart';
+import 'package:jaipi/src/services/services.dart';
 import 'package:provider/provider.dart';
 
 class AddressConfirmationView extends StatefulWidget {

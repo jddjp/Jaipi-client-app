@@ -1,13 +1,10 @@
 import 'package:algolia/algolia.dart';
 import 'package:flutter/material.dart';
-import 'package:jaipi/src/components/business_item.dart';
-import 'package:jaipi/src/components/highlight_text.dart';
-import 'package:jaipi/src/components/item_widget.dart';
-import 'package:jaipi/src/config/colors.dart';
-import 'package:jaipi/src/config/constants.dart';
-import 'package:jaipi/src/helpers/widget_helper.dart';
-import 'package:jaipi/src/models/item_model.dart';
-import 'package:jaipi/src/services/algolia_service.dart';
+import 'package:jaipi/src/components/components.dart';
+import 'package:jaipi/src/config/config.dart';
+import 'package:jaipi/src/helpers/helpers.dart';
+import 'package:jaipi/src/models/models.dart';
+import 'package:jaipi/src/services/services.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
@@ -85,21 +82,22 @@ class CustomSearchDelegate extends SearchDelegate {
         return Container(
           padding: EdgeInsets.only(top: spacing_standard_new),
           child: ListView.builder(
-            primary: false,
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            itemCount: result.length,
-            itemBuilder: (BuildContext context, int index) {
-              return business != null
-                  ? ItemWidget(item: new ItemModel.fromJSON({
-                      ...result[index].data,
-                      "id": result[index].objectID
-                    }))
-                  : BusinessItem(business: {
-                      ...result[index].data,
-                      "id": result[index].objectID,
-                    });
-            }),
+              primary: false,
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount: result.length,
+              itemBuilder: (BuildContext context, int index) {
+                return business != null
+                    ? ItemWidget(
+                        item: new ItemModel.fromJSON({
+                        ...result[index].data,
+                        "id": result[index].objectID
+                      }))
+                    : BusinessItem(business: {
+                        ...result[index].data,
+                        "id": result[index].objectID,
+                      });
+              }),
         );
       },
     );

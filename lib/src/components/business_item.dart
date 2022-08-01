@@ -1,12 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:jaipi/src/config/colors.dart';
-import 'package:jaipi/src/config/constants.dart';
-import 'package:jaipi/src/config/images.dart';
-import 'package:jaipi/src/helpers/extension_helper.dart';
-import 'package:jaipi/src/helpers/utils_helper.dart';
-import 'package:jaipi/src/helpers/widget_helper.dart';
-import 'package:jaipi/src/views/business_view.dart';
+import 'package:flutter/material.dart';
+import 'package:jaipi/src/config/config.dart';
+import 'package:jaipi/src/helpers/helpers.dart';
+import 'package:jaipi/src/views/views.dart';
 
 class BusinessItem extends StatelessWidget {
   final Map<String, dynamic> business;
@@ -80,9 +76,8 @@ class BusinessItem extends StatelessWidget {
                           ? Text(
                               "Abierto",
                               style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: food_color_green
-                              ),
+                                  fontWeight: FontWeight.bold,
+                                  color: food_color_green),
                               textAlign: TextAlign.center,
                             )
                           : Container()

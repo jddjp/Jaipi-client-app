@@ -1,22 +1,13 @@
-import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:jaipi/src/components/alert_widget.dart';
-import 'package:jaipi/src/config/colors.dart';
-import 'package:jaipi/src/config/constants.dart';
-import 'package:jaipi/src/helpers/extension_helper.dart';
-import 'package:jaipi/src/helpers/widget_helper.dart';
-import 'package:jaipi/src/models/order_item_model.dart';
-import 'package:jaipi/src/providers/cart_provider.dart';
-import 'package:jaipi/src/providers/location_provider.dart';
-import 'package:jaipi/src/providers/login_provider.dart';
-import 'package:jaipi/src/views/addresses_view.dart';
-import 'package:jaipi/src/views/complete_profile_view.dart';
-import 'package:jaipi/src/views/payment_view.dart';
-import 'package:jaipi/src/views/home_view.dart';
+import 'package:jaipi/src/components/components.dart';
+import 'package:jaipi/src/config/config.dart';
+import 'package:jaipi/src/helpers/helpers.dart';
+import 'package:jaipi/src/models/models.dart';
+import 'package:jaipi/src/providers/providers.dart';
+import 'package:jaipi/src/views/views.dart';
 import 'package:provider/provider.dart';
-import 'package:jaipi/src/components/default_button.dart';
 
 class CartView extends StatefulWidget {
   // Route name for this view

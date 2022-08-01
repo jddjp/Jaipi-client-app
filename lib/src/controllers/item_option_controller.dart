@@ -1,5 +1,5 @@
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:jaipi/src/models/item_option_model.dart';
+import 'package:jaipi/src/models/models.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 class ItemOptionController extends ControllerMVC {

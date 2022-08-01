@@ -1,24 +1,18 @@
 import 'dart:convert';
 
-import 'package:jaipi/src/services/google_distance_matrix.dart';
-import 'package:jaipi/src/services/google_places_service.dart';
-import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:jaipi/src/config/constants.dart';
-import 'package:jaipi/src/helpers/utils_helper.dart';
-import 'package:jaipi/src/models/order_item_model.dart';
-import 'package:jaipi/src/models/order_model.dart';
-import 'package:jaipi/src/providers/location_provider.dart';
+import 'package:intl/intl.dart';
+import 'package:jaipi/src/config/config.dart';
+import 'package:jaipi/src/helpers/helpers.dart';
+import 'package:jaipi/src/models/models.dart';
+import 'package:jaipi/src/providers/providers.dart';
+import 'package:jaipi/src/services/services.dart';
+import 'package:jaipi/src/views/views.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../helpers/extension_helper.dart';
-import '../views/login_view.dart';
-import 'login_provider.dart';
 
 class CartProvider with ChangeNotifier {
   SharedPreferences _prefs;
@@ -62,7 +56,7 @@ class CartProvider with ChangeNotifier {
     return _orderInProgress != null && _orderInProgress != '';
   }
 
-  void checkOrderInProgress () async {
+  void checkOrderInProgress() async {
     _prefs = await SharedPreferences.getInstance();
     // Check for a order in progress
     _orderInProgress = _prefs.getString('orderInProgress');
@@ -85,7 +79,8 @@ class CartProvider with ChangeNotifier {
   }
 
   void addItem(OrderItemModel orderItem) {
-    if (_order.business != null && orderItem.item.business['id'] != _order.business.id) {
+    if (_order.business != null &&
+        orderItem.item.business['id'] != _order.business.id) {
       Fluttertoast.showToast(
           msg:
               "No puedes hacer un pedido de diferentes negocios al mismo tiempo.");
@@ -99,7 +94,9 @@ class CartProvider with ChangeNotifier {
       return;
     }
 
-    _order.business = FirebaseFirestore.instance.collection('businesses').doc(orderItem.item.business['id']);
+    _order.business = FirebaseFirestore.instance
+        .collection('businesses')
+        .doc(orderItem.item.business['id']);
     _order.items.add(orderItem);
     notifyListeners();
   }
@@ -142,7 +139,7 @@ class CartProvider with ChangeNotifier {
   }
 
   Future<void> setBusiness(String businessId) async {
-   DocumentReference businessRef =
+    DocumentReference businessRef =
         FirebaseFirestore.instance.collection('businesses').doc(businessId);
 
     // Load business data
@@ -177,22 +174,22 @@ class CartProvider with ChangeNotifier {
   Future<void> calculateDeliveryData() async {
     _prefs = await SharedPreferences.getInstance();
     LatLng userLocation;
-    LatLng centerLocation =
-        LatLng(CITY_LATITUDE, CITY_LONGITUDE); // Epicentro
+    LatLng centerLocation = LatLng(CITY_LATITUDE, CITY_LONGITUDE); // Epicentro
 
     // Get from business
     if (_business != null && _business['location'] != null) {
-      centerLocation = LatLng(_business['location'].latitude, _business['location'].longitude);
+      centerLocation = LatLng(
+          _business['location'].latitude, _business['location'].longitude);
     }
 
     if (_prefs.getString('userPlace') != null) {
-        final userPlace = jsonDecode(_prefs.getString('userPlace'));
-        _order.deliveryAddress = Place.fromJson(userPlace);
-        userLocation = _order.deliveryAddress.location;
-      } else {
-        // Default location
-        userLocation = LatLng(CITY_LATITUDE, CITY_LONGITUDE);
-      }
+      final userPlace = jsonDecode(_prefs.getString('userPlace'));
+      _order.deliveryAddress = Place.fromJson(userPlace);
+      userLocation = _order.deliveryAddress.location;
+    } else {
+      // Default location
+      userLocation = LatLng(CITY_LATITUDE, CITY_LONGITUDE);
+    }
 
     // Calculate delivery distance
     double distance = userLocation != null

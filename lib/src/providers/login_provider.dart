@@ -1,22 +1,21 @@
 import 'dart:convert';
 import 'dart:math';
-// import 'package:flutter_web_auth/flutter_web_auth.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:intl/intl.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:crypto/crypto.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+// import 'package:flutter_web_auth/flutter_web_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:intl/intl.dart';
+import 'package:jaipi/src/helpers/helpers.dart';
+import 'package:jaipi/src/views/views.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:jaipi/src/helpers/extension_helper.dart';
-import 'package:jaipi/src/views/opt_view.dart';
-import 'package:jaipi/src/views/complete_profile_view.dart';
-import 'package:jaipi/src/views/home_view.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
-import 'package:crypto/crypto.dart';
 
 /// Generates a cryptographically secure random nonce, to be included in a
 /// credential request.

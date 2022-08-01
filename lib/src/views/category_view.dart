@@ -1,10 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:jaipi/src/components/business_item.dart';
-import 'package:jaipi/src/components/search_input_widget.dart';
-import 'package:jaipi/src/config/colors.dart';
-import 'package:jaipi/src/config/constants.dart';
-import 'package:jaipi/src/helpers/widget_helper.dart';
+import 'package:jaipi/src/components/components.dart';
+import 'package:jaipi/src/config/config.dart';
+import 'package:jaipi/src/helpers/helpers.dart';
 
 class CategoryView extends StatefulWidget {
   // Route name for this view

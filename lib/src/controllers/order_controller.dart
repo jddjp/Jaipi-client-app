@@ -1,12 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:jaipi/src/helpers/utils_helper.dart';
-import 'package:jaipi/src/helpers/widget_helper.dart';
-import 'package:jaipi/src/models/item_model.dart';
-import 'package:jaipi/src/models/item_option_model.dart';
-import 'package:jaipi/src/models/order_item_model.dart';
-import 'package:jaipi/src/providers/cart_provider.dart';
+import 'package:jaipi/src/helpers/helpers.dart';
+import 'package:jaipi/src/models/models.dart';
+import 'package:jaipi/src/providers/providers.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:provider/provider.dart';
 
@@ -26,7 +23,8 @@ class OrderController extends ControllerMVC {
   List<ItemOptionModel> get itemOptions => _itemOptions;
 
   double get unitPrice {
-    double price = getRealPrice(item.price, item.withDiscount, item.discount, item.discountType);
+    double price = getRealPrice(
+        item.price, item.withDiscount, item.discount, item.discountType);
     double subtotal = 0.0;
     if (orderItem.options != null && orderItem.options.length > 0) {
       orderItem.options.forEach((option) {
