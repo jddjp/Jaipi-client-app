@@ -28,33 +28,23 @@ class DrawerView extends StatelessWidget {
                   title: Text(context.watch<LoginProvider>().isCompleted()
                       ? context.watch<LoginProvider>().currentUser['name']
                       : "Completar perfil"),
-                  leading: Icon(Icons.account_circle_outlined,
-                      color: appColorPrimary),
+                  leading:
+                      Icon(Icons.account_circle_outlined, color: Colors.yellow),
                   onTap: () {
                     launchScreen(context, Profile.routeName);
                   },
                 )
               : ListTile(
-                  title: Text("Iniciar sesión"),
-                  leading: Icon(Icons.account_circle_outlined,
-                      color: appColorPrimary),
+                  title: Text("Tu perfil"),
+                  leading:
+                      Icon(Icons.account_circle_outlined, color: Colors.yellow),
                   onTap: () {
                     launchScreen(context, LoginView.routeName);
                   },
                 )),
           ListTile(
-            title: Text("Direcciones"),
-            leading: Icon(
-              Icons.place,
-              color: appColorPrimary,
-            ),
-            onTap: () {
-              launchScreen(context, AddressesView.routeName);
-            },
-          ),
-          ListTile(
             title: Text('Soporte'),
-            leading: Icon(Icons.help_outline, color: appColorPrimary),
+            leading: Icon(Icons.construction, color: Colors.yellow),
             onTap: () {
               Uri waUrl = Uri(
                   scheme: "https",
@@ -67,10 +57,59 @@ class DrawerView extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text('Acerca de'),
-            leading: Icon(Icons.info_outline, color: appColorPrimary),
-            //launchScreen(context, AboutPage.routeName),
-            onTap: () => Navigator.pushNamed(context, 'about'),
+            title: Text("Metodos de pago "),
+            leading: Icon(
+              Icons.payments,
+              color: Colors.yellow,
+            ),
+            onTap: () {},
+          ),
+          ListTile(
+            title: Text("Direcciones"),
+            leading: Icon(
+              Icons.place,
+              color: Colors.yellow,
+            ),
+            onTap: () {
+              launchScreen(context, AddressesView.routeName);
+            },
+          ),
+          ListTile(
+            horizontalTitleGap: 30,
+            leading: Image.asset(
+              "assets/images/coupon.png",
+              height: 32,
+              color: Colors.yellow,
+            ),
+            title: const Text(
+              'Cuponera',
+            ),
+            trailing: const Icon(Icons.arrow_forward),
+            onTap: () {},
+          ),
+          ListTile(
+            horizontalTitleGap: 30,
+            leading: const Icon(
+              Icons.directions_bike,
+              color: Colors.yellow,
+            ),
+            title: const Text(
+              'Quiero ser Jaipi Driver ',
+            ),
+            trailing: const Icon(Icons.arrow_forward),
+            onTap: () {},
+          ),
+          ListTile(
+            horizontalTitleGap: 30,
+            leading: const Icon(
+              Icons.add_business,
+              color: Colors.yellow,
+            ),
+            title: const Text(
+              'Quiero ser  Aliado Jaipi ',
+            ),
+            trailing: const Icon(Icons.arrow_forward),
+            onTap: () {},
           ),
           (context.watch<LoginProvider>().isLoggedIn()
               ? ListTile(
