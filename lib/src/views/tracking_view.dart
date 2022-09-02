@@ -151,7 +151,7 @@ class _TrackingViewState extends State<TrackingView> {
                 ))),
             bottomNavigationBar: Container(
               width: width,
-              height: 118,
+              height: 100,
               decoration: boxDecoration(radius: 0),
               padding: EdgeInsets.all(spacing_standard_new),
               child: Column(
