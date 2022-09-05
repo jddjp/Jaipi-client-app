@@ -9,6 +9,7 @@ import 'package:jaipi/src/providers/providers.dart';
 import 'package:jaipi/src/services/services.dart';
 import 'package:jaipi/src/views/views.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeView extends StatefulWidget {
   // Route name for this view
@@ -104,7 +105,6 @@ class _HomeViewState extends State<HomeView> {
                   color: Colors.cyan[50],
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(.15),
                       blurRadius: 30,
                       offset: Offset(0, 10),
                     ),
@@ -135,17 +135,12 @@ class _HomeViewState extends State<HomeView> {
                         ),
                       ),
                       IconButton(
+                        tooltip: 'Proximamente',
                         icon: Icon(
                           Icons.percent,
                           color: food_color_yellow,
                         ),
-                        onPressed: () {
-                          _offersSnapshot = FirebaseFirestore.instance
-                              .collection('offers')
-                              .where('active', isEqualTo: true)
-                              .orderBy('index')
-                              .get();
-                        },
+                        onPressed: () {},
                       ),
                       const Text(
                         'Ofertas',
@@ -157,13 +152,12 @@ class _HomeViewState extends State<HomeView> {
                         ),
                       ),
                       IconButton(
+                        tooltip: 'Proximamente',
                         icon: Icon(
                           Icons.star,
                           color: food_color_yellow,
                         ),
-                        onPressed: () {
-                          launchScreen(context, CartView.routeName);
-                        },
+                        onPressed: () {},
                       ),
                       const Text(
                         'Favoritos',
@@ -175,7 +169,6 @@ class _HomeViewState extends State<HomeView> {
                         ),
                       ),
                       IconButton(
-                        tooltip: 'Soporte',
                         icon: Icon(
                           Icons.handyman_outlined,
                           color: food_color_yellow,
@@ -187,8 +180,9 @@ class _HomeViewState extends State<HomeView> {
                               path: "52$WHATSAPPPHONE",
                               queryParameters: {
                                 "text":
-                                    "Hola, ¿Estoy contactando con el soporte de jaipi?"
+                                    "Hola, ¿Quiero unirme a su equipo o ser aliado?"
                               });
+                          launch(waUrl.toString());
                         },
                       ),
                       const Text(
@@ -201,7 +195,6 @@ class _HomeViewState extends State<HomeView> {
                         ),
                       ),
                       IconButton(
-                        tooltip: 'Mi perfil',
                         icon: Icon(
                           Icons.person_outline,
                           color: food_color_yellow,
