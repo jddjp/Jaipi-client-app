@@ -19,7 +19,7 @@ Future<void> main() async {
       ChangeNotifierProvider<CartProvider>(create: (_) => CartProvider()),
       ChangeNotifierProvider<LocationProvider>(
           create: (_) => LocationProvider())
-    ],
+    ], 
     child: MainApp(),
   ));
 }
@@ -242,8 +242,13 @@ class _MainAppState extends State<MainApp> {
                 print("==============CART_VIEW=====================");
                 return CartView();
               } else {
+<<<<<<< HEAD
                 // Go to Home
                 print("==============PRESENTATION01_VIEW=====================");
+=======
+                // Go to presentation
+                print("==============MAIN_PRESENTATION=====================");
+>>>>>>> 35c7515709a4d73d29b972c639b05a84c0c6bcec
                 return Presentation01View();
               }
 

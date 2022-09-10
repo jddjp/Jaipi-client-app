@@ -6,6 +6,8 @@ import 'package:jaipi/src/views/views.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+GlobalKey _toolTipKey = GlobalKey();
+
 class DrawerView extends StatelessWidget {
   static const routeName = 'drawer';
 
@@ -51,7 +53,7 @@ class DrawerView extends StatelessWidget {
                   host: "wa.me",
                   path: "52$WHATSAPPPHONE",
                   queryParameters: {
-                    "text": "Hola, ¿Estoy contactando con el soporte de jaipi?"
+                    "text": "Hola, ¿Quiero unirme a su equipo o ser aliado?"
                   });
               launch(waUrl.toString());
             },
@@ -62,7 +64,17 @@ class DrawerView extends StatelessWidget {
               Icons.payments,
               color: Colors.yellow,
             ),
-            onTap: () {},
+            onTap: () {
+              AlertDialog alert = AlertDialog(
+                title: Text('proximamente'),
+              );
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return alert;
+                },
+              );
+            },
           ),
           ListTile(
             title: Text("Direcciones"),
@@ -85,7 +97,17 @@ class DrawerView extends StatelessWidget {
               'Cuponera',
             ),
             trailing: const Icon(Icons.arrow_forward),
-            onTap: () {},
+            onTap: () {
+              AlertDialog alert = AlertDialog(
+                title: Text('proximamente'),
+              );
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return alert;
+                },
+              );
+            },
           ),
           ListTile(
             horizontalTitleGap: 30,
@@ -97,7 +119,17 @@ class DrawerView extends StatelessWidget {
               'Quiero ser Jaipi Driver ',
             ),
             trailing: const Icon(Icons.arrow_forward),
-            onTap: () {},
+            onTap: () {
+              AlertDialog alert = AlertDialog(
+                title: Text('proximamente'),
+              );
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return alert;
+                },
+              );
+            },
           ),
           ListTile(
             horizontalTitleGap: 30,
@@ -109,7 +141,17 @@ class DrawerView extends StatelessWidget {
               'Quiero ser  Aliado Jaipi ',
             ),
             trailing: const Icon(Icons.arrow_forward),
-            onTap: () {},
+            onTap: () {
+              AlertDialog alert = AlertDialog(
+                title: Text('proximamente'),
+              );
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return alert;
+                },
+              );
+            },
           ),
           (context.watch<LoginProvider>().isLoggedIn()
               ? ListTile(

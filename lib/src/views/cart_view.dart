@@ -72,7 +72,7 @@ class _CartViewState extends State<CartView> {
     return Scaffold(
       backgroundColor: food_white,
       bottomNavigationBar: Container(
-        height: context.watch<CartProvider>().hasService == true ? 190 : 115,
+        height: context.watch<CartProvider>().hasService == true ? 100 : 60,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[

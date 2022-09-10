@@ -9,6 +9,7 @@ import 'package:jaipi/src/providers/providers.dart';
 import 'package:jaipi/src/services/services.dart';
 import 'package:jaipi/src/views/views.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeView extends StatefulWidget {
   // Route name for this view
@@ -55,7 +56,7 @@ class _HomeViewState extends State<HomeView> {
     currentAddress = context.watch<LocationProvider>().getAddress();
     //print("////////ADDRESSS");
     //print(currentAddress);
-
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Color(0xFFFCFBFB),
       drawer: DrawerView(),
@@ -98,52 +99,122 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ),
             )
-          // todo: barra de navegacion aun no terminada
-          : BottomNavigationBar(
-              onTap: (index) {
-                setState(() {
-                  _actualPage = index;
-                });
-              },
-              currentIndex: _actualPage,
-              items: [
-                  BottomNavigationBarItem(
-                    backgroundColor: appColorPrimary,
-                    icon: Icon(
-                      Icons.home,
-                      color: food_color_yellow,
+          : BottomAppBar(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.cyan[50],
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 30,
+                      offset: Offset(0, 10),
                     ),
-                    label: "Inicio",
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.percent,
-                      color: food_color_yellow,
-                    ),
-                    label: "Ofertas",
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.star,
-                      color: food_color_yellow,
-                    ),
-                    label: "Favoritos",
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.handyman_outlined,
-                      color: food_color_yellow,
-                    ),
-                    label: "Soporte",
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.person_outline,
-                      color: food_color_yellow,
-                    ),
-                    label: "Mi perfil",
-                  ),
-                ]),
+                  ],
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                width: double.maxFinite,
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      IconButton(
+                          color: food_color_yellow,
+                          icon: Icon(
+                            Icons.home,
+                            color: food_color_yellow,
+                          ),
+                          iconSize: 20,
+                          onPressed: () {
+                            launchScreen(context, HomeView.routeName);
+                          }),
+                      const Text(
+                        'Inicio',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w800,
+                          fontFamily: 'Roboto',
+                          fontSize: 8,
+                        ),
+                      ),
+                      IconButton(
+                        tooltip: 'Proximamente',
+                        icon: Icon(
+                          Icons.percent,
+                          color: food_color_yellow,
+                        ),
+                        onPressed: () {},
+                      ),
+                      const Text(
+                        'Ofertas',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w800,
+                          fontFamily: 'Roboto',
+                          fontSize: 8,
+                        ),
+                      ),
+                      IconButton(
+                        tooltip: 'Proximamente',
+                        icon: Icon(
+                          Icons.star,
+                          color: food_color_yellow,
+                        ),
+                        onPressed: () {},
+                      ),
+                      const Text(
+                        'Favoritos',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w800,
+                          fontFamily: 'Roboto',
+                          fontSize: 8,
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(
+                          Icons.handyman_outlined,
+                          color: food_color_yellow,
+                        ),
+                        onPressed: () {
+                          Uri waUrl = Uri(
+                              scheme: "https",
+                              host: "wa.me",
+                              path: "52$WHATSAPPPHONE",
+                              queryParameters: {
+                                "text":
+                                    "Hola, ¿Quiero unirme a su equipo o ser aliado?"
+                              });
+                          launch(waUrl.toString());
+                        },
+                      ),
+                      const Text(
+                        'Soporte',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w800,
+                          fontFamily: 'Roboto',
+                          fontSize: 8,
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(
+                          Icons.person_outline,
+                          color: food_color_yellow,
+                        ),
+                        onPressed: () {
+                          launchScreen(context, LoginView.routeName);
+                        },
+                      ),
+                      const Text(
+                        'Mi perfil',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w800,
+                          fontFamily: 'Roboto',
+                          fontSize: 8,
+                        ),
+                      ),
+                    ]),
+              ),
+            ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
