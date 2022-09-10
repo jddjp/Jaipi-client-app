@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:jaipi/src/config/config.dart';
 import 'package:jaipi/src/helpers/helpers.dart';
 import 'package:jaipi/src/providers/providers.dart';
+import 'package:jaipi/src/views/presentation01_view.dart';
 import 'package:jaipi/src/views/views.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -242,8 +243,8 @@ class _MainAppState extends State<MainApp> {
                 return CartView();
               } else {
                 // Go to Home
-                print("==============HOME_VIEW=====================");
-                return HomeView();
+                print("==============PRESENTATION01_VIEW=====================");
+                return Presentation01View();
               }
 
               // User logged in
