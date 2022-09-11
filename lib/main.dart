@@ -19,7 +19,7 @@ Future<void> main() async {
       ChangeNotifierProvider<CartProvider>(create: (_) => CartProvider()),
       ChangeNotifierProvider<LocationProvider>(
           create: (_) => LocationProvider())
-    ], 
+    ],
     child: MainApp(),
   ));
 }
