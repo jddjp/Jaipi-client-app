@@ -242,8 +242,12 @@ class _MainAppState extends State<MainApp> {
                 print("==============CART_VIEW=====================");
                 return CartView();
               } else {
+                // Go to Home
+                print("==============PRESENTATION01_VIEW=====================");
+
                 // Go to presentation
                 print("==============MAIN_PRESENTATION=====================");
+
                 return Presentation01View();
               }
 
